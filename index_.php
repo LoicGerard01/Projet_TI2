@@ -23,6 +23,7 @@ require './admin/src/php/utils/liste_includes.php';
         }
         ?>
         <a href="index_.php?page=login.php">Connexion</a>
+        <a href="index_.php?page=login.php">Creer Son Compte</a>
     </nav>
     <div id="contenu">
         <?php
