@@ -13,7 +13,7 @@ class ClientDB extends Client
 
     public function ajout_client($nom,$prenom,$email,$adresse,$numero){
         try{
-            $query="select ajout_client(:nom,:prenom,:email,:adresse,:numero)";
+            $query = "SELECT ajout_client(:nom, :prenom, :email, :adresse, :numero)";
             $res = $this->_bd->prepare($query);
             $res->bindValue(':nom',$nom);
             $res->bindValue(':prenom',$prenom);
@@ -23,6 +23,12 @@ class ClientDB extends Client
             $res->execute();
             $data = $res->fetch();
             return $data;
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($result) {
+                echo "Client ajouté avec succès. Identifiant du client : " . $result['client_id'];
+            } else {
+                echo "Erreur lors de l'ajout du client.";
+            }
         }catch(PDOException $e){
             print "Echec ".$e->getMessage();
         }
@@ -31,7 +37,7 @@ class ClientDB extends Client
 
     public function getClientByEmail($email){
         try{
-            $query="select * from client where email = :email";
+            $query="select * from ti_client where email = :email";
             $res = $this->_bd->prepare($query);
             $res->bindValue(':email',$email);
             $res->execute();
