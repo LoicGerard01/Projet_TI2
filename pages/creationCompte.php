@@ -5,17 +5,18 @@ require_once 'admin/src/php/classes/Connexion.class.php';
 require_once 'admin/src/php/classes/ClientDB.class.php';
 require_once 'admin/src/php/classes/PanierDB.class.php';
 // Variables pour stocker les données du formulaire et les messages d'erreur
-$nom = $prenom = $email = $adresse = $numero = '';
+$nom = $prenom = $email = $adresse = $numero = $password = '';
 $successMessage = $errorMessage = '';
 
 // Vérifier si le formulaire a été soumis
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Récupérer les données du formulaire
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
     $adresse = $_POST['adresse'];
     $numero = $_POST['numero'];
+    $password = $_POST['password'];
 
     // Valider les données (vous pouvez ajouter des validations supplémentaires ici)
 
@@ -24,11 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $clientDB = new ClientDB($pdo);
 
     // Appeler la méthode ajout_client pour insérer le nouveau client
-    $result = $clientDB->ajout_client($nom, $prenom, $email, $adresse, $numero);
+    $result = $clientDB->ajout_client($nom, $prenom, $email, $adresse, $numero , $password);
     if ($result) {
         $successMessage = "Compte crée avec succès";
         // Réinitialiser les champs du formulaire après un ajout réussi
-        $nom = $prenom = $email = $adresse = $numero = '';
+        $nom = $prenom = $email = $adresse = $numero = $password = '';
     } else {
         $errorMessage = "Erreur lors de la creation du compte.";
     }
@@ -45,9 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <h2>Formulaire d'ajout de client</h2>
-
+<br>
 <?php if (!empty($successMessage)) : ?>
     <p style="color: green;"><?php echo $successMessage; ?></p>
+    <meta http-equiv="refresh" content="4;URL=index_.php?page=accueil.php">
 <?php endif; ?>
 
 <?php if (!empty($errorMessage)) : ?>
@@ -69,6 +71,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <label for="numero">Numéro de téléphone :</label>
     <input type="text" id="numero" name="numero" value="<?php echo htmlspecialchars($numero); ?>" required><br><br>
+
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($password); ?>" required><br><br>
 
     <input type="submit" value="Ajouter">
 </form>

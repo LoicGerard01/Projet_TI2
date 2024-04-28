@@ -11,15 +11,16 @@ class ClientDB extends Client
         $this->_bd = $cnx;
     }
 
-    public function ajout_client($nom,$prenom,$email,$adresse,$numero){
+    public function ajout_client($nom,$prenom,$email,$adresse,$numero,$password){
         try{
-            $query = "SELECT ajout_client(:nom, :prenom, :email, :adresse, :numero)";
+            $query = "SELECT ajout_client(:nom, :prenom, :email, :adresse, :numero, :password)";
             $res = $this->_bd->prepare($query);
             $res->bindValue(':nom',$nom);
             $res->bindValue(':prenom',$prenom);
             $res->bindValue(':email',$email);
             $res->bindValue(':adresse',$adresse);
             $res->bindValue(':numero',$numero);
+            $res->bindValue(':password',$password);
             $res->execute();
             $data = $res->fetch();
             return $data;
@@ -47,6 +48,25 @@ class ClientDB extends Client
             print "Echec ".$e->getMessage();
         }
     }
+
+    public function verif_client($email,$password){
+        try {
+            $query = "SELECT id_client FROM ti_client WHERE email = :email AND password = :password";
+            $res = $this->_bd->prepare($query);
+            $res->bindValue(':email', $email);
+            $res->bindValue(':password', $password);
+            $res->execute();
+            $result = $res->fetch(PDO::FETCH_ASSOC);
+            return $result ? true : false;
+
+        }catch (PDOException $e){
+            print "Echec ".$e->getMessage();
+        }
+
+
+    }
+
+
 
 
 }
