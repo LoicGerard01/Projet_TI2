@@ -58,6 +58,27 @@ class PanierDB extends Panier
         }
     }
 
+    public function produits_dans_panier($client_id)
+    {
+        try {
+            $query = "select * from produits_dans_panier(:client_id)";
+
+            $res = $this->_bd->prepare($query);
+            $res->bindValue(':client_id', $client_id);
+            $res->execute();
+
+            // Récupérer tous les résultats sous forme de tableau associatif
+            $produits = $res->fetchAll(PDO::FETCH_ASSOC);
+
+            return $produits; // Retourner le tableau des produits dans le panier
+        } catch (PDOException $e) {
+            // Afficher l'erreur spécifique en cas d'échec de la requête
+            echo "Erreur lors de la récupération des produits dans le panier : " . $e->getMessage();
+            return []; // Retourner un tableau vide en cas d'échec
+        }
+    }
+
+
 
 
 

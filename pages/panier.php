@@ -45,3 +45,24 @@ if (!$panierDB->hasPanier($clientId)) {
         <a href="index_.php?page=accueil_client.php">Revenir à l'accueil</a>
 
     </nav>
+
+<?php
+$produitDB = new ProduitsDB($cnx);
+$listeProduits = $panierDB->produits_dans_panier($clientId);
+//var_dump($listeProduits);
+
+// Afficher les détails des produits dans le panier
+if ($listeProduits && !empty($listeProduits)) {
+    echo "<h3>Produits dans votre panier :</h3>";
+    echo "<ul>";
+    foreach ($listeProduits as $produit) {
+        echo "<li>{$produit['product_name']} 
+- Prix : {$produit['product_price']} €</li>";
+    }
+    echo "</ul>";
+} else {
+    echo "<p>Votre panier est vide.</p>";
+}
+?>
+
+
