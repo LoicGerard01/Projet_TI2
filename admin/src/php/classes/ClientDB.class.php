@@ -48,8 +48,20 @@ class ClientDB extends Client
             print "Echec ".$e->getMessage();
         }
     }
+    public function getClientById($id_client){
+        try{
+            $query="select * from ti_client where id_client = :id_client";
+            $res = $this->_bd->prepare($query);
+            $res->bindValue(':id_client',$id_client);
+            $res->execute();
+            $data = $res->fetch();
+            return $data;
+        }catch(PDOException $e){
+            print "Echec ".$e->getMessage();
+        }
+    }
 
-    public function verif_client($email,$password){
+  /*  public function verif_client($email,$password){
         try {
             $query = "SELECT id_client FROM ti_client WHERE email = :email AND password = :password";
             $res = $this->_bd->prepare($query);
@@ -62,8 +74,22 @@ class ClientDB extends Client
         }catch (PDOException $e){
             print "Echec ".$e->getMessage();
         }
-
-
+    }
+  */
+    public function verif_client($email,$password){
+        try {
+            $query = "SELECT id_client FROM ti_client WHERE email = :email AND password = :password";
+            $res = $this->_bd->prepare($query);
+            $res->bindValue(':email', $email);
+            $res->bindValue(':password', $password);
+            $res->execute();
+            $retour = $res->fetchColumn(0);
+            return $retour;
+            $this->_bd->commit();
+        }catch (PDOException $e){
+            $this->_bd->rollback();
+            print "Echec ".$e->getMessage();
+        }
     }
 
 

@@ -3,7 +3,6 @@
 if (isset($_POST['submit_login'])) {
     // Extraction des données du formulaire
     extract($_POST, EXTR_OVERWRITE);
-
     // Connexion à la base de données
     $connexion = Connexion::getInstance($dsn, $user, $password);
 
@@ -26,8 +25,8 @@ if (isset($_POST['submit_login'])) {
         $client = $clientDB->verif_client($email, $password);
 
         if ($client) {
-            // Identifiant de session pour les clients
-            $_SESSION['client'] = true;
+            // Stocker les informations du client dans $_SESSION['client']
+            $_SESSION['client'] = $client; // Assurez-vous que $client contient les bonnes données
             // Redirection vers l'espace client
             header("Location: index_.php?page=accueil_client.php");
             exit;

@@ -4,7 +4,8 @@ $liste = $cat->getAllCategories();
 $nbr_cat = count($liste);
 
 ?>
-
+<a href="index_.php?page=login.php">Connexion</a>
+<a href="index_.php?page=creationCompte.php">Creer Son Compte</a>
 
 <div class="album py-5 bg-body-tertiary">
     <div class="container">

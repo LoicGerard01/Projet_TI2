@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Ajouter un nouveau client</title>
 </head>
 <body>
-<h2>Formulaire d'ajout de client</h2>
+<h2>Formulaire de création de compte</h2>
 <br>
 <?php if (!empty($successMessage)) : ?>
     <p style="color: green;"><?php echo $successMessage; ?></p>

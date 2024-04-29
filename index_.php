@@ -22,24 +22,27 @@ require './admin/src/php/utils/liste_includes.php';
             include './admin/src/php/utils/menu_public.php';
         }
         ?>
-        <a href="index_.php?page=login.php">Connexion</a>
-        <a href="index_.php?page=creationCompte.php">Creer Son Compte</a>
+
     </nav>
     <div id="contenu">
         <?php
         //si aucune variable de session 'page'
         if (!isset($_SESSION['page'])) {
             $_SESSION['page'] = './pages/accueil.php';
+            ?> <?php
         }
         if (isset($_GET['page'])) {
             //print "<br>paramètre page : ".$_GET['page']."<br>";
             $_SESSION['page'] = 'pages/'.$_GET['page'];
+
         }
         if (file_exists($_SESSION['page'])) {
             include $_SESSION['page'];
+
         } else {
             include './pages/page404.php';
         }
+
         ?>
     </div>
     <footer id="footer">&nbsp;
