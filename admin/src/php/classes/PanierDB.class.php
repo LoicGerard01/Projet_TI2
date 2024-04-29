@@ -13,18 +13,20 @@ class PanierDB extends Panier
 
     public function creer_panier($client_id)
     {
+        echo $client_id;
         try {
-            $query = "INSERT INTO ti_panier (client) VALUES (:client_id)";
+            $query = "select creer_panier(:client_id)";
             $res = $this->_bd->prepare($query);
             $res->bindValue(':client_id', $client_id);
             $res->execute();
-
-            // Optionnel : retourner l'identifiant du panier créé
-            return $this->_bd->lastInsertId();
+            return true; // Retourne vrai si la création du panier réussit
         } catch (PDOException $e) {
-            print "Echec " . $e->getMessage();
+            // Afficher l'erreur spécifique en cas d'échec de la requête
+            echo "Erreur lors de la création du panier : " . $e->getMessage();
+            return false;
         }
     }
+
 
     public function ajout_produit_panier($client_id, $produit_id)
     {
@@ -40,17 +42,19 @@ class PanierDB extends Panier
         }
     }
 
-    public function hasPanier($clientId)
+    public function hasPanier($client_id)
     {
         try {
             $query = "SELECT COUNT(*) FROM ti_panier WHERE client = :client_id";
             $res = $this->_bd->prepare($query);
-            $res->bindValue(':client_id', $clientId);
+            $res->bindValue(':client_id', $client_id);
             $res->execute();
             $count = $res->fetchColumn();
-            return $count > 0;
+            return $count > 0; // Retourne vrai si le panier existe pour ce client
         } catch (PDOException $e) {
-            print "Echec " . $e->getMessage();
+            // Afficher l'erreur spécifique en cas d'échec de la requête
+            echo "Erreur lors de la vérification du panier : " . $e->getMessage();
+            return false;
         }
     }
 

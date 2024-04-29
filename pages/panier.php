@@ -9,21 +9,28 @@ $liste = $cat->getAllCategories();
 $nbr_cat = count($liste);
 
 $clientDB = new ClientDB($cnx);
+
 $panierDB = new PanierDB($cnx);
 $clientId = $_SESSION['client'];
 
 $clientInfo = $clientDB->getClientById($clientId);
 
+$id_client = $clientInfo['id_client'];
+
 if ($clientInfo) {
-    $nomClient = $clientInfo['nom']; // Récupérer le nom du client depuis les informations récupérées
+    $nomClient = $clientInfo['prenom']; // Récupérer le nom du client depuis les informations récupérées
     echo "<p>Bonjour $nomClient !</p>"; // Afficher un message de bienvenue avec le nom du client
+
 } else {
     echo "<p>Bonjour !</p>"; // Afficher un message de bienvenue générique
 }
 
 if (!$panierDB->hasPanier($clientId)) {
     // Si le client n'a pas de panier, créer un nouveau panier pour ce client
-    $panier_id = $panierDB->creer_panier($clientId); // Créer un nouveau panier et récupérer son ID
+    echo "Ce client n'a pas de panier.<br>";
+    $pdo = new PDO('pgsql:host=localhost;dbname=demo;port=5432', 'anonyme', 'anonyme');
+    $panierDB = new PanierDB($pdo);
+    $result = $panierDB->creer_panier($clientId);
 }
 
 ?>

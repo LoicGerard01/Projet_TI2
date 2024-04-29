@@ -5,7 +5,9 @@ $nbr = count($liste);
 //var_dump($liste);
 
 ?>
-<a href="?page=accueil.php">Page précédente</a>
+<a href="index_.php?page=disconnect.php">Log out</a>
+<a href="?page=panier.php">Consulter votre panier</a>
+<a href="?page=accueil_client.php">Page précédente</a>
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -22,6 +24,9 @@ $nbr = count($liste);
                                 ?>
                             </p>
                             <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au panier</button>
+                                </div>
                             </div>
                         </div>
                     </div>

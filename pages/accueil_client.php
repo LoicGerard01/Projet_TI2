@@ -52,14 +52,13 @@ if ($clientInfo) {
                             <div class="card-body">
                                 <p class="card-text">
                                     <?php
-                                    print $liste[$i]->nom_categorie;
+                                    print $liste[$i]->libelle;
                                     ?>
                                 </p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="index_.php?id_categorie=<?php print $liste[$i]->id_categorie; ?>&page=produits_categorie.php"
-                                           type="button" class="btn btn-sm btn-outline-secondary">View</a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                        <a href="index_.php?id_categorie=<?php print $liste[$i]->id_categorie; ?>&page=produits_categorie_client.php"
+                                           type="button" class="btn btn-sm btn-outline-secondary">Voir</a>
                                     </div>
                                 </div>
                             </div>

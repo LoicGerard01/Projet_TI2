@@ -13,7 +13,7 @@ class CategorieDB extends Categorie
 
     public function getProduitsById_cat($id_cat)
     {
-        $query = "select * from vue_produits_cat_sous_cat_mag";
+        $query = "select * from vue_produits_par_categorie";
         $query.= " where id_categorie = :id_cat";
         try {
             $this->_bd->beginTransaction();
@@ -36,7 +36,7 @@ class CategorieDB extends Categorie
 
     public function getAllCategories()
     {
-        $query = "select * from vue_categorie_sous_categorie";
+        $query = "select * from ti_categorie";
         try {
             $this->_bd->beginTransaction();
             $resultset = $this->_bd->prepare($query);
