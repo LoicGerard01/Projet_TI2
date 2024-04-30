@@ -32,6 +32,7 @@ if ($clientInfo) {
 
         <a href="index_.php?page=disconnect.php">Log out</a>
         <a href="?page=panier.php">Consulter votre panier</a>
+        <a href="?page=commande.php">Afficher l'historique des commandes</a>
 
     </nav>
 

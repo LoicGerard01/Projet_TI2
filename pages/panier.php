@@ -10,6 +10,7 @@ $nbr_cat = count($liste);
 $clientDB = new ClientDB($cnx);
 $panierDB = new PanierDB($cnx);
 $clientId = $_SESSION['client'];
+$commandeDB = new CommandeDB($cnx);
 
 $clientInfo = $clientDB->getClientById($clientId);
 
@@ -45,7 +46,23 @@ if (isset($_POST['supprimer_panier'])) {
         echo "Erreur PDO : " . $e->getMessage();
     }
 }
+if (isset($_POST['valider_commande'])) {
+    try {
+        // Transférer le contenu du panier vers la commande
+        $pdo = new PDO('pgsql:host=localhost;dbname=demo;port=5432', 'anonyme', 'anonyme');
+        $commandeDB = new CommandeDB($pdo);
 
+        $result = $commandeDB->passer_commande($clientId);
+
+        // Afficher un message de succès
+        echo "Commande validée avec succès. Panier vidé.";
+
+        // Rafraîchir la page pour afficher le panier vide
+        header("Refresh:1000");
+    } catch (PDOException $e) {
+        echo "Erreur PDO : " . $e->getMessage();
+    }
+}
 
 
 ?>
@@ -80,6 +97,13 @@ if ($listeProduits && !empty($listeProduits)) {
     echo '<input type="hidden" name="client_id" value="' . $clientId . '">';
     echo '<button type="submit" name="supprimer_panier" class="btn btn-danger">Vider le panier</button>';
     echo '</form>';
+
+    // Formulaire pour valider la commande
+    echo '<form method="post" action="">';
+    echo '<input type="hidden" name="client_id" value="' . $clientId . '">';
+    echo '<button type="submit" name="valider_commande" class="btn btn-success">Valider la commande</button>';
+    echo '</form>';
+
 }
 else echo "<h2>Votre panier est vide </h2>";
 ?>

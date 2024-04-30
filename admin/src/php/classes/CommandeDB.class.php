@@ -25,18 +25,33 @@ class CommandeDB extends Commande
         }
     }
 
-    public function transferer_panier_vers_commande($client_id)
+    public function passer_commande($client_id)
     {
         try {
-            $query = "select transferer_panier_vers_commande(:client_id";
+            $query = "SELECT passer_commande(:client_id)";
             $res = $this->_bd->prepare($query);
             $res->bindValue(':client_id', $client_id);
             $res->execute();
-            echo "commande créée";
+            //echo "Commande validée avec succès. Panier vidé.";
         } catch (PDOException $e) {
-            print "Echec " . $e->getMessage();
+            echo "Erreur lors de la validation de la commande : " . $e->getMessage();
         }
     }
+
+    public function get_commandes_client($client_id)
+    {
+        try {
+            $query = "SELECT * FROM get_commandes_client(:client_id)";
+            $stmt = $this->_bd->prepare($query);
+            $stmt->bindValue(':client_id', $client_id, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Erreur lors de la récupération des commandes : " . $e->getMessage();
+            return null;
+        }
+    }
+
 
 
 
