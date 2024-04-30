@@ -13,7 +13,7 @@ class PanierDB extends Panier
 
     public function creer_panier($client_id)
     {
-        echo $client_id;
+       // echo $client_id;
         try {
             $query = "select creer_panier(:client_id)";
             $res = $this->_bd->prepare($query);
@@ -80,21 +80,21 @@ class PanierDB extends Panier
         }
     }
 
-    public function supprimer_panier($client_id){
+    public function supprimer_panier($client_id)
+    {
         try {
             $query = "select supprimer_panier(:client_id)";
-
             $res = $this->_bd->prepare($query);
             $res->bindValue(':client_id', $client_id);
             $res->execute();
-            echo "produit ajouté";
+
+            return true; // Indique que la suppression s'est bien déroulée
         } catch (PDOException $e) {
-            print "Echec " . $e->getMessage();
+            echo "Erreur lors de la suppression du panier : " . $e->getMessage();
+            return false;
         }
-
-
-
     }
+
 
 
 
