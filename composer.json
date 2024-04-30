@@ -1,0 +1,19 @@
+{
+    "name": "vendor/gerard",
+    "description": "projet TI2",
+    "type": "project",
+    "authors": [
+        {
+            "name": "LoicGerard01",
+            "email": "loic.gerard@condorcet.be"
+        }
+    ],
+    "require": {
+        "tecnickcom/tc-lib-pdf": "^8.0"
+    },
+    "repositories": [{
+        "type": "vcs",
+        "url": "git@github.com:tecnickcom/tc-lib-pdf.git"
+    }
+    ]
+}
