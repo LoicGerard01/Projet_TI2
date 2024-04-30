@@ -28,7 +28,7 @@ class PanierDB extends Panier
     }
 
 
-    public function ajout_produit_panier($client_id, $produit_id)
+    public function ajouter_produit_panier($client_id, $produit_id)
     {
         try {
             $query = "INSERT INTO ti_detailpanier (fk_panier, fk_produit) VALUES ((SELECT id_panier FROM ti_panier WHERE client = :client_id), :produit_id)";
@@ -36,11 +36,13 @@ class PanierDB extends Panier
             $res->bindValue(':client_id', $client_id);
             $res->bindValue(':produit_id', $produit_id);
             $res->execute();
-            echo "Produit ajouté au panier avec succès.";
+            return true; // Succès de l'ajout au panier
         } catch (PDOException $e) {
-            print "Echec " . $e->getMessage();
+            echo "Erreur lors de l'ajout au panier : " . $e->getMessage();
+            return false; // Échec de l'ajout au panier
         }
     }
+
 
     public function hasPanier($client_id)
     {
@@ -76,6 +78,22 @@ class PanierDB extends Panier
             echo "Erreur lors de la récupération des produits dans le panier : " . $e->getMessage();
             return []; // Retourner un tableau vide en cas d'échec
         }
+    }
+
+    public function supprimer_panier($client_id){
+        try {
+            $query = "select supprimer_panier(:client_id)";
+
+            $res = $this->_bd->prepare($query);
+            $res->bindValue(':client_id', $client_id);
+            $res->execute();
+            echo "produit ajouté";
+        } catch (PDOException $e) {
+            print "Echec " . $e->getMessage();
+        }
+
+
+
     }
 
 
