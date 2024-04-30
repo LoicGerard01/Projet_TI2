@@ -51,6 +51,18 @@ class CommandeDB extends Commande
             return null;
         }
     }
+    public function getToutesLesCommandesAvecDetails(){
+        try{
+            $query = "SELECT * FROM vue_commandes_details";
+            $res=$this->_bd->prepare($query);
+            $res->execute();
+            return $res->fetchAll(PDO::FETCH_ASSOC);
+        }catch (PDOException $e){
+            echo "Erreur ".$e->getMessage();
+            return null;
+        }
+    }
+
 
 
 

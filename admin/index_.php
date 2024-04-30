@@ -22,7 +22,8 @@ require './src/php/utils/liste_includes.php';
             include './src/php/utils/menu_public.php';
         }
         ?>
-        <a href="index_.php?page=disconnect.php">Log out</a>
+
+    </nav>
     </nav>
     <div id="contenu">
         <?php
@@ -41,9 +42,14 @@ require './src/php/utils/liste_includes.php';
         }
         ?>
     </div>
-    <footer id="footer">&nbsp;</footer>
+    <div>
+        <?php
+        if (file_exists('./src/php/utils/footer.php')) {
+            include './src/php/utils/footer.php';
+        }
+        ?>
+    </div>
 </div>
 </body>
-
 </html>
 

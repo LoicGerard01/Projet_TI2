@@ -1,6 +1,21 @@
 <?php
 // Inclusion des fichiers requis
 require 'admin/src/php/utils/verif_client.php'; // Vérification de l'authentification
+require 'vendor/autoload.php';
+
+use Com\Tecnick\Pdf\Tcpdf;
+
+// Créer une nouvelle instance de TCPDF
+$pdf = new Tcpdf('mm', true, true, true, 'pdfa1', null);
+
+$pdf->SetCreator("GG Entreprise");
+$pdf->SetAuthor('GG Entreprise');
+$pdf->SetTitle('Historique des Commandes');
+$pdf->SetSubject('Historique des Commandes');
+$pdf->SetKeywords('Commandes, PDF, Historique');
+$pdf->setDefaultCellMargin(15,15,15,15);
+
+$html = '<h2>Historique des commandes</h2>';
 
 // Instanciation de la classe CommandeDB
 $commandeDB = new CommandeDB($cnx);
@@ -77,5 +92,6 @@ $listeCommandes = $commandeDB->get_commandes_client($client_id);
     } else {
         echo "<p>Aucune commande trouvée pour ce client.</p>";
     }
+
     ?>
 </div>
