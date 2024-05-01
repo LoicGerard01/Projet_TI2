@@ -1,4 +1,42 @@
+*{
+    font-family: Georgia;
+
+}
+
+.page{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+
+.product-image {
+    width: 100%;
+    height: 150px; /* Hauteur de l'image */
+    background-size: cover; /* Redimensionne l'image pour couvrir toute la zone */
+    background-position: center; /* Centre l'image */
+    border-bottom: 1px solid #e1e4e8; /* Bordure inférieure */
+}
+
+.formulaireGestionProduits {
+    text-align: center;
+    border: 2px solid black;
+    background-color: gainsboro;
+
+
+}
+.affichageGestionProduits{
+    background-color: white;
+}
+
+.card-img-top {
+    width: 90%;
+    height: 250px; /* Hauteur fixe pour chaque image */
+    object-fit: cover; /* Redimensionne l'image pour remplir le conteneur en conservant les proportions */
+}
+
+
+
 .footerContacts {
+    padding: 0;
     background: #18283c;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -6,7 +44,7 @@
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     background: rgb(41, 24, 24);
-    border: 2px solid;
+    border: 4px solid;
 }
 
 .footerContacts .contactSection1 {

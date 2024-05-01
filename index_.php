@@ -12,7 +12,7 @@ require './admin/src/php/utils/liste_includes.php';
     <link rel="stylesheet" href="admin/public/css/custom.css" type="text/css">
 </head>
 <body>
-<div class="container">
+<div class="page">
     <header id="header">
     </header>
 

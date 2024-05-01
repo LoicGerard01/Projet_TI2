@@ -18,8 +18,8 @@ require './src/php/utils/liste_includes.php';
 
     <nav id="menu">
         <?php
-        if (file_exists('./src/php/utils/menu_public.php')) {
-            include './src/php/utils/menu_public.php';
+        if (file_exists('./src/php/utils/menu_admin.php')) {
+            include './src/php/utils/menu_admin.php';
         }
         ?>
 

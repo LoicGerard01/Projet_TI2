@@ -52,8 +52,3 @@ $listeCommandes = $commandeDB->getToutesLesCommandesAvecDetails();
 </div>
 
 
-
-<?php
-// Inclure le fichier de pied de page HTML
-include './src/php/utils/footer.php';
-?>
