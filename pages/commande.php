@@ -2,7 +2,13 @@
 // Inclusion des fichiers requis
 require 'admin/src/php/utils/verif_client.php'; // Vérification de l'authentification
 require 'vendor/autoload.php';
+?>
+<div class="liens">
+    <a href="index_.php?page=accueil_client.php">Revenir à l'accueil</a>
+    <a href="index_.php?page=disconnect.php">Log out</a>
+</div><br>
 
+<?php
 use Com\Tecnick\Pdf\Tcpdf;
 
 // Créer une nouvelle instance de TCPDF
@@ -33,8 +39,7 @@ $listeCommandes = $commandeDB->get_commandes_client($client_id);
         include './src/php/utils/menu_public.php';
     }
     ?>
-    <a href="index_.php?page=disconnect.php">Log out</a>
-    <a href="index_.php?page=accueil_client.php">Revenir à l'accueil</a>
+
 </nav>
 
 <div class="container">

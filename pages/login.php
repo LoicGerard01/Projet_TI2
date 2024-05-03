@@ -44,11 +44,11 @@ if (isset($_POST['submit_login'])) {
 <h2> Connexion </h2><br>
 <form method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
     <div class="mb-3">
-        <label for="login" class="form-label">Email address</label>
+        <label for="login" class="form-label">Adresse email / nom d'utilisateur</label>
         <input type="text" name="login" class="form-control" id="login" aria-describedby="loginHelp">
     </div>
     <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
+        <label for="password" class="form-label">Mot de passe</label>
         <input type="password" name="password" class="form-control" id="password">
     </div>
     <button type="submit" name="submit_login" class="btn btn-primary">Connexion</button>

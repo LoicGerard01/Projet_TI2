@@ -1,11 +1,43 @@
 *{
-    font-family: Georgia;
+    font-family: Barlow;
+    font-size: 20px;
+
+
 
 }
 
 .page{
     padding-left: 20%;
     padding-right: 20%;
+    background-color: white;
+
+
+}
+
+.navbar-brand img {
+    width: 150px; /* Définissez la largeur souhaitée pour votre logo */
+    height: auto; /* Laissez la hauteur ajustée automatiquement pour conserver les proportions */
+    margin-right: 30px; /* Optionnel : ajoute une marge à droite du logo pour l'espacement */
+    border-radius: 20px ;
+}
+
+.liens {
+    background-color: bisque;
+    border: 1px solid black;
+    text-align: end;
+    display: flex; /* Utilisation de flexbox */
+    justify-content: space-between; /* Répartir les éléments à équidistance */
+}
+
+.liens a {
+    text-decoration: none;
+    font-style: italic;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+.contenu{
+    text-align: center;
+
 }
 
 .product-image {
@@ -14,6 +46,7 @@
     background-size: cover; /* Redimensionne l'image pour couvrir toute la zone */
     background-position: center; /* Centre l'image */
     border-bottom: 1px solid #e1e4e8; /* Bordure inférieure */
+
 }
 
 .formulaireGestionProduits {

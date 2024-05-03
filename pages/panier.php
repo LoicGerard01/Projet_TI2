@@ -1,7 +1,17 @@
 <?php
 // Vérification de l'authentification de l'utilisateur
 require 'admin/src/php/utils/verif_client.php';
-print "<br>Page d'accueil du client ";
+//print "<br>Page d'accueil du client ";
+?>
+<div class="liens">
+    <a href="index_.php?page=accueil_client.php">Revenir à l'accueil</a>
+    <a href="index_.php?page=disconnect.php">Log out</a>
+
+</div>
+<br>
+<?php
+
+
 
 $cat = new CategorieDB($cnx);
 $liste = $cat->getAllCategories();
@@ -73,8 +83,7 @@ if (isset($_POST['valider_commande'])) {
         include './src/php/utils/menu_public.php';
     }
     ?>
-    <a href="index_.php?page=disconnect.php">Log out</a>
-    <a href="index_.php?page=accueil_client.php">Revenir à l'accueil</a>
+
 </nav>
 
 <?php
