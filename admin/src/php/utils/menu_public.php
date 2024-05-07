@@ -4,7 +4,9 @@
 
             <a class="navbar-brand" href="#">
                 <img src="/admin/public/images/logo.jpg" alt="Logo" width="40" height="40">
-                Nos commerces
+
+                    <span class="titre"></span>LGTECH
+
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"

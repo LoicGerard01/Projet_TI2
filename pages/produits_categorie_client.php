@@ -60,6 +60,8 @@ $nbr = count($liste);
 
                         <div class="card-body">
                             <p class="card-text"><?php echo $liste[$i]->nom; ?></p>
+                            <p class="card-text"><?php echo $liste[$i]->description; ?></p>
+                            <p class="card-text"><?php echo $liste[$i]->prix; ?>€</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <!-- Ajouter un bouton avec un événement onclick pour appeler la fonction JavaScript -->

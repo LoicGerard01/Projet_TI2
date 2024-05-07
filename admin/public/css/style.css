@@ -13,6 +13,9 @@
 
 
 }
+.titre{
+
+}
 
 .navbar-brand img {
     width: 150px; /* Définissez la largeur souhaitée pour votre logo */
@@ -22,18 +25,27 @@
 }
 
 .liens {
-    background-color: bisque;
-    border: 1px solid black;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    background-color: black;
+    border: 2px solid black;
     text-align: end;
     display: flex; /* Utilisation de flexbox */
     justify-content: space-between; /* Répartir les éléments à équidistance */
 }
 
 .liens a {
-    text-decoration: none;
+    text-decoration: underline;
     font-style: italic;
     padding-right: 20px;
     padding-left: 20px;
+    font-size: 25px;
+}
+.liens a:visited{
+    color: #fbfbfb;
+}
+.liens a:hover{
+    color: navajowhite;
 }
 .contenu{
     text-align: center;

@@ -26,6 +26,7 @@ $nbr = count($liste);
                             <p class="card-text">
                                 <?php echo $produit->description; ?>
                             </p>
+                            <p class="card-text"><?php echo $liste[$i]->prix; ?>€</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <!-- Vous pouvez ajouter d'autres éléments ici -->
                             </div>
