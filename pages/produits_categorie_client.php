@@ -44,10 +44,11 @@ $nbr = count($liste);
     <!-- Ajoutez ici vos liens CSS et scripts JavaScript si nécessaire -->
 </head>
 <body>
+<div class="liens">
 <a href="index_.php?page=disconnect.php">Log out</a>
 <a href="?page=panier.php">Consulter votre panier</a>
 <a href="?page=accueil_client.php">Page précédente</a>
-
+</div>
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
