@@ -19,9 +19,6 @@ $listeCommandes = $commandeDB->getToutesLesCommandesAvecDetails();
 </div>
 
 
-
-
-
 <div class="container">
     <h1>Liste des Commandes en cours (Administrateur)</h1>
     <?php
