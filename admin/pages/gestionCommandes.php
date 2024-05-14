@@ -1,9 +1,6 @@
 <?php
 // Inclusion des fichiers requis
 require './src/php/utils/verifier_connexion.php';
-require_once './src/php/db/dbPgConnect.php';
-require_once './src/php/classes/Connexion.class.php';
-require_once './src/php/classes/CommandeDB.class.php';
 
 // Vérification des autorisations administratives ici si nécessaire
 // Instanciation de la classe CommandeDB pour interagir avec la base de données
