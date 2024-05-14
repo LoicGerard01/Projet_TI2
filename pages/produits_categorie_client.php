@@ -1,7 +1,4 @@
 <?php
-// Inclure les classes et initialisations nécessaires
-require_once 'admin/src/php/classes/CategorieDB.class.php';
-require_once 'admin/src/php/classes/PanierDB.class.php';
 
 // Vérifier si un produit doit être ajouté au panier
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_produit'])) {
@@ -36,18 +33,13 @@ $liste = $cat->getProduitsById_cat($_GET['id_categorie']);
 $nbr = count($liste);
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des produits</title>
-    <!-- Ajoutez ici vos liens CSS et scripts JavaScript si nécessaire -->
-</head>
-<body>
+
+<title>Liste des produits</title>
+
 <div class="liens">
-<a href="index_.php?page=disconnect.php">Log out</a>
-<a href="?page=panier.php">Consulter votre panier</a>
-<a href="?page=accueil_client.php">Page précédente</a>
+    <a href="index_.php?page=disconnect.php">Log out</a>
+    <a href="?page=panier.php">Consulter votre panier</a>
+    <a href="?page=accueil_client.php">Page précédente</a>
 </div>
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
@@ -102,5 +94,3 @@ $nbr = count($liste);
     }
 </script>
 
-</body>
-</html>
