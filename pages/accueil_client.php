@@ -29,10 +29,10 @@ $clientInfo = $clientDB->getClientById($clientId);
     </nav>
 <?php
 if ($clientInfo) {
-    $nomClient = $clientInfo['nom']; // Récupérer le nom du client depuis les informations récupérées
-    echo "<br><p>Bonjour $nomClient !</p>"; // Afficher un message de bienvenue avec le nom du client
+    $nomClient = $clientInfo['nom'];
+    echo "<br><p>Bonjour $nomClient !</p>";
 } else {
-    echo "<p>Bonjour !</p>"; // Afficher un message de bienvenue générique
+    echo "<p>Bonjour !</p>";
 }
 
 

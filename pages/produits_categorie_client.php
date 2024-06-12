@@ -1,24 +1,23 @@
 <?php
-// Inclure les classes et initialisations nécessaires
+
 require_once 'admin/src/php/classes/CategorieDB.class.php';
 require_once 'admin/src/php/classes/PanierDB.class.php';
 
-// Vérifier si un produit doit être ajouté au panier
+// Vérifie si un produit doit être ajouté au panier
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_produit'])) {
-    // Récupérer l'identifiant du produit à ajouter
+
     $idProduit = $_POST['id_produit'];
 
-    // Démarrer la session pour accéder à $_SESSION['client']
     session_start();
     $clientId = $_SESSION['client'];
 
-    // Crée une instance de la classe PanierDB
+
     $panierDB = new PanierDB($cnx);
 
-    // Appeler la méthode pour ajouter le produit au panier
+
     $result = $panierDB->ajouter_produit_panier($clientId, $idProduit);
 
-    // Envoyer une réponse au client en fonction du résultat
+
     if ($result) {
         $reponse = "success";
         echo "success";
@@ -27,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_produit'])) {
         echo "error";
     }
 
-    exit; // Arrêter le script PHP après la réponse AJAX
+    exit;
 }
 
 
