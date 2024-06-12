@@ -18,9 +18,9 @@
 }
 
 .navbar-brand img {
-    width: 150px; /* Définissez la largeur souhaitée pour votre logo */
-    height: auto; /* Laissez la hauteur ajustée automatiquement pour conserver les proportions */
-    margin-right: 30px; /* Optionnel : ajoute une marge à droite du logo pour l'espacement */
+    width: 150px;
+    height: auto;
+    margin-right: 30px;
     border-radius: 20px ;
 }
 
@@ -30,8 +30,8 @@
     background-color: black;
     border: 2px solid black;
     text-align: end;
-    display: flex; /* Utilisation de flexbox */
-    justify-content: space-between; /* Répartir les éléments à équidistance */
+    display: flex;
+    justify-content: space-between;
 }
 
 .liens a {
@@ -54,10 +54,10 @@
 
 .product-image {
     width: 100%;
-    height: 150px; /* Hauteur de l'image */
-    background-size: cover; /* Redimensionne l'image pour couvrir toute la zone */
-    background-position: center; /* Centre l'image */
-    border-bottom: 1px solid #e1e4e8; /* Bordure inférieure */
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 1px solid #e1e4e8;
 
 }
 
@@ -74,8 +74,8 @@
 
 .card-img-top {
     width: 90%;
-    height: 250px; /* Hauteur fixe pour chaque image */
-    object-fit: cover; /* Redimensionne l'image pour remplir le conteneur en conservant les proportions */
+    height: 250px;
+    object-fit: cover;
 }
 
 
