@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_produit'])) {
     session_start();
     $clientId = $_SESSION['client'];
 
-    // Créer une instance de la classe PanierDB
+    // Crée une instance de la classe PanierDB
     $panierDB = new PanierDB($cnx);
 
     // Appeler la méthode pour ajouter le produit au panier
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_produit'])) {
     exit; // Arrêter le script PHP après la réponse AJAX
 }
 
-// Récupérer la liste des produits de la catégorie spécifiée
+
 $cat = new CategorieDB($cnx);
 $liste = $cat->getProduitsById_cat($_GET['id_categorie']);
 $nbr = count($liste);
@@ -41,7 +41,7 @@ $nbr = count($liste);
 <head>
     <meta charset="UTF-8">
     <title>Liste des produits</title>
-    <!-- Ajoutez ici vos liens CSS et scripts JavaScript si nécessaire -->
+
 </head>
 <body>
 <a href="index_.php?page=disconnect.php">Log out</a>
@@ -54,7 +54,7 @@ $nbr = count($liste);
             <?php for ($i = 0; $i < $nbr; $i++) : ?>
                 <div class="col">
                     <div class="card shadow-sm">
-                        <!-- Afficher l'image du produit -->
+
                         <img src="<?php echo $liste[$i]->image; ?>" class="bd-placeholder-img card-img-top" width="100%"
                              height="225" alt="Image produit">
 
@@ -64,7 +64,7 @@ $nbr = count($liste);
                             <p class="card-text"><?php echo $liste[$i]->prix; ?>€</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <!-- Ajouter un bouton avec un événement onclick pour appeler la fonction JavaScript -->
+
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
                                             onclick="ajouterAuPanier(<?php echo $liste[$i]->id_produit; ?>)">Ajouter au
                                         panier
@@ -78,28 +78,6 @@ $nbr = count($liste);
         </div>
     </div>
 </div>
-
-
-<script>
-    // Fonction JavaScript pour ajouter un produit au panier via AJAX
-    function ajouterAuPanier(idProduit) {
-        // Créer une requête AJAX
-        let xhr = new XMLHttpRequest();
-        xhr.open("POST", "", true); // Utilisez la même page comme point de destination pour la requête AJAX
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                // Gérer la réponse du serveur
-                let response = xhr.responseText;
-                alert("Produit ajouté au panier !");
-
-            }
-        };
-
-        // Envoyer les données POST avec l'identifiant du produit
-        xhr.send("id_produit=" + idProduit);
-    }
-</script>
 
 </body>
 </html>

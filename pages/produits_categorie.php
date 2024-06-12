@@ -16,7 +16,7 @@ $nbr = count($liste);
                 ?>
                 <div class="col">
                     <div class="card shadow-sm">
-                        <!-- Remplacez cette partie par l'affichage de l'image -->
+
                         <?php if (empty($produit->image)) { ?>
                             <img src="<?php echo $produit->image; ?>" class="bd-placeholder-img card-img-top"
                                  width="100%" height="225" alt="Image produit">
@@ -28,7 +28,7 @@ $nbr = count($liste);
                             </p>
                             <p class="card-text"><?php echo $liste[$i]->prix; ?>€</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <!-- Vous pouvez ajouter d'autres éléments ici -->
+
                             </div>
                         </div>
                     </div>

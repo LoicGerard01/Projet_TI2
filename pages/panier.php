@@ -27,10 +27,10 @@ $clientInfo = $clientDB->getClientById($clientId);
 $id_client = $clientInfo['id_client'];
 
 if ($clientInfo) {
-    $nomClient = $clientInfo['prenom']; // Récupérer le prénom du client depuis les informations récupérées
-    echo "<p>Bonjour $nomClient !</p>"; // Afficher un message de bienvenue avec le prénom du client
+    $nomClient = $clientInfo['prenom'];
+    echo "<p>Bonjour $nomClient !</p>";
 } else {
-    echo "<p>Bonjour !</p>"; // Afficher un message de bienvenue générique
+    echo "<p>Bonjour !</p>";
 }
 
 if (!$panierDB->hasPanier($clientId)) {
@@ -58,16 +58,16 @@ if (isset($_POST['supprimer_panier'])) {
 }
 if (isset($_POST['valider_commande'])) {
     try {
-        // Transférer le contenu du panier vers la commande
+        // Transfère le contenu du panier vers la commande
         $pdo = new PDO('pgsql:host=localhost;dbname=demo;port=5432', 'anonyme', 'anonyme');
         $commandeDB = new CommandeDB($pdo);
 
         $result = $commandeDB->passer_commande($clientId);
 
-        // Afficher un message de succès
+
         echo "Commande validée avec succès. Panier vidé.";
 
-        // Rafraîchir la page pour afficher le panier vide
+
         header("Refresh:1000");
     } catch (PDOException $e) {
         echo "Erreur PDO : " . $e->getMessage();
@@ -90,7 +90,7 @@ if (isset($_POST['valider_commande'])) {
 $produitDB = new ProduitsDB($cnx);
 $listeProduits = $panierDB->produits_dans_panier($clientId);
 
-// Afficher les détails des produits dans le panier
+// Affiche les détails des produits dans le panier
 if ($listeProduits && !empty($listeProduits)) {
     echo "<h3>Produits dans votre panier :</h3>";
     echo "<ul>";

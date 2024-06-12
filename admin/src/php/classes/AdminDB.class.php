@@ -13,7 +13,7 @@ class AdminDB extends Admin
 
     public function getAdmin($login,$password)
     {
-        $query = "select verifier_admin(:login,:password) as retour"; //retour pour 1 ou 0 retourné
+        $query = "select verifier_admin(:login,:password) as retour";
         try {
             $this->_bd->beginTransaction();
             $resultset = $this->_bd->prepare($query);

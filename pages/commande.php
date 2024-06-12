@@ -36,7 +36,7 @@ $listeCommandes = $commandeDB->get_commandes_client($client_id);
     <?php
     // Vérifier s'il y a des commandes à afficher
     if ($listeCommandes && !empty($listeCommandes)) {
-        // Initialiser un tableau pour stocker les commandes avec leurs produits
+
         $commandesAvecProduits = array();
 
         // Boucler sur chaque commande pour regrouper les produits par commande

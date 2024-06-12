@@ -18,7 +18,7 @@ class CommandeDB extends Commande
             $res = $this->_bd->prepare($query);
             $res->bindValue(':panier_id', $panier_id);
             $res->execute();
-            // Optionnel : retourner l'identifiant de la commande créée
+
             return $this->_bd->lastInsertId();
         } catch (PDOException $e) {
             print "Echec " . $e->getMessage();

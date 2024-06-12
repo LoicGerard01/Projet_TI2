@@ -20,7 +20,7 @@ class ProduitsDB extends Produits
             $res->bindValue(':prix', $prix);
             $res->bindValue(':categorie', $categorie);
             $res->execute();
-            // Optionnel : retourner l'identifiant du produit inséré
+
             return $this->_bd->lastInsertId();
         } catch (PDOException $e) {
             print "Echec " . $e->getMessage();
@@ -33,7 +33,7 @@ class ProduitsDB extends Produits
             $res = $this->_bd->prepare($query);
             $res->bindValue(':id_produit', $id_produit);
             $res->execute();
-            // Optionnel : retourner l'identifiant du produit inséré
+
             return $this->_bd->lastInsertId();
         } catch (PDOException $e) {
             print "Echec " . $e->getMessage();

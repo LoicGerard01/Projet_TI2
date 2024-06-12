@@ -4,7 +4,6 @@ $liste = $cat->getAllCategories();
 $nbr_cat = count($liste);
 
 ?>
-<!-- Styles Bootstrap -->
 
 
 <div class="liens">
@@ -13,7 +12,7 @@ $nbr_cat = count($liste);
 </div>
 
 <div class="contenu">
-    <!-- Utilisez une balise <img> avec des classes Bootstrap pour l'image -->
+
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -50,7 +49,7 @@ $nbr_cat = count($liste);
                     ?>
                     <div class="col">
                         <div class="card shadow-sm">
-                            <!-- Utilisez la classe img-fluid pour rendre l'image réactive -->
+
                             <img src="./admin/public/images/<?php echo($i + 1); ?>.jpg"
                                  class="bd-placeholder-img card-img-top img-fluid" alt="Image de la catégorie">
 
