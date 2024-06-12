@@ -58,6 +58,7 @@ require './admin/src/php/utils/liste_includes.php';
         ?>
     </div>
 </div>
+<script src="./admin/public/js/fonctions.js"></script>
 </body>
 
 </html>
