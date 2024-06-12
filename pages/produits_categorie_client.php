@@ -44,11 +44,10 @@ $nbr = count($liste);
     <!-- Ajoutez ici vos liens CSS et scripts JavaScript si nécessaire -->
 </head>
 <body>
-<div class="liens">
-    <a href="index_.php?page=disconnect.php">Log out</a>
-    <a href="?page=panier.php">Consulter votre panier</a>
-    <a href="?page=accueil_client.php">Page précédente</a>
-</div>
+<a href="index_.php?page=disconnect.php">Log out</a>
+<a href="?page=panier.php">Consulter votre panier</a>
+<a href="?page=accueil_client.php">Page précédente</a>
+
 <div class="album py-5 bg-body-tertiary">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -81,7 +80,26 @@ $nbr = count($liste);
 </div>
 
 
+<script>
+    // Fonction JavaScript pour ajouter un produit au panier via AJAX
+    function ajouterAuPanier(idProduit) {
+        // Créer une requête AJAX
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "", true); // Utilisez la même page comme point de destination pour la requête AJAX
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Gérer la réponse du serveur
+                let response = xhr.responseText;
+                alert("Produit ajouté au panier !");
 
+            }
+        };
+
+        // Envoyer les données POST avec l'identifiant du produit
+        xhr.send("id_produit=" + idProduit);
+    }
+</script>
 
 </body>
 </html>

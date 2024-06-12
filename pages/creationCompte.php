@@ -1,9 +1,5 @@
 <?php
-// Inclure les classes et la connexion à la base de données
-require_once 'admin/src/php/db/dbPgConnect.php';
-require_once 'admin/src/php/classes/Connexion.class.php';
-require_once 'admin/src/php/classes/ClientDB.class.php';
-require_once 'admin/src/php/classes/PanierDB.class.php';
+
 // Variables pour stocker les données du formulaire et les messages d'erreur
 $nom = $prenom = $email = $adresse = $numero = $password = '';
 $successMessage = $errorMessage = '';
@@ -18,17 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $numero = $_POST['numero'];
     $password = $_POST['password'];
 
-    // Valider les données (vous pouvez ajouter des validations supplémentaires ici)
-
-    // Créer une instance de ClientDB en passant la connexion PDO
     $pdo = new PDO('pgsql:host=localhost;dbname=demo;port=5432', 'anonyme', 'anonyme');
     $clientDB = new ClientDB($pdo);
 
-    // Appeler la méthode ajout_client pour insérer le nouveau client
     $result = $clientDB->ajout_client($nom, $prenom, $email, $adresse, $numero , $password);
     if ($result) {
         $successMessage = "Compte crée avec succès";
-        // Réinitialiser les champs du formulaire après un ajout réussi
         $nom = $prenom = $email = $adresse = $numero = $password = '';
     } else {
         $errorMessage = "Erreur lors de la creation du compte.";
@@ -38,13 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Ajouter un nouveau client</title>
-</head>
-<body>
+<title>Ajouter un nouveau client</title>
+
 <h2>Formulaire de création de compte</h2>
 <br>
 <?php if (!empty($successMessage)) : ?>
@@ -77,5 +63,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <input type="submit" value="Ajouter">
 </form>
-</body>
-</html>
+

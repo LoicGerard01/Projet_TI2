@@ -1,9 +1,5 @@
 <?php
 require './src/php/utils/verifier_connexion.php';
-require_once './src/php/db/dbPgConnect.php';
-require_once './src/php/classes/Connexion.class.php';
-require_once './src/php/classes/CommandeDB.class.php';
-require_once './src/php/classes/CategorieDB.class.php';
 
 
 $cat = new CategorieDB($cnx);
